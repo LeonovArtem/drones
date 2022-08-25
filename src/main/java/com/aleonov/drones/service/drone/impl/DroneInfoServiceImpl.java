@@ -1,6 +1,7 @@
 package com.aleonov.drones.service.drone.impl;
 
 import com.aleonov.drones.dto.DroneResponseDto;
+import com.aleonov.drones.entity.Drone;
 import com.aleonov.drones.mapper.DroneResponseMapper;
 import com.aleonov.drones.repository.DroneRepository;
 import com.aleonov.drones.service.drone.DroneInfoService;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,4 +25,8 @@ public class DroneInfoServiceImpl implements DroneInfoService {
                 .toList();
     }
 
+    @Override
+    public Optional<Drone> getById(Long id) {
+        return repository.findById(id);
+    }
 }

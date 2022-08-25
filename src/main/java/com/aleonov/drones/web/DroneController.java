@@ -6,6 +6,8 @@ import com.aleonov.drones.mapper.DroneResponseMapper;
 import com.aleonov.drones.service.drone.DroneFactory;
 import com.aleonov.drones.service.drone.DroneInfoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -33,4 +35,11 @@ public class DroneController {
                 );
     }
 
+    @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ResponseEntity<DroneResponseDto>> getById(@PathVariable("id") Long id) {
+        return Mono.justOrEmpty(droneInfoService.getById(id))
+                .map(mapper::droneToDroneResponseDto)
+                .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
 }
