@@ -42,4 +42,9 @@ public class DroneController {
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
+
+    @GetMapping("available")
+    public List<DroneResponseDto> getAvailableDrones() {
+        return droneInfoService.getAvailableDronesForLoading();
+    }
 }

@@ -29,4 +29,12 @@ public class DroneInfoServiceImpl implements DroneInfoService {
     public Optional<Drone> getById(Long id) {
         return repository.findById(id);
     }
+
+    @Override
+    public List<DroneResponseDto> getAvailableDronesForLoading() {
+        return repository.findByStateIsIn(Drone.State.getActiveStates())
+                .stream()
+                .map(mapper::droneToDroneResponseDto)
+                .toList();
+    }
 }

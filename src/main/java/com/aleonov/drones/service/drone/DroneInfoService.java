@@ -10,4 +10,6 @@ public interface DroneInfoService {
     List<DroneResponseDto> getAll();
 
     Optional<Drone> getById(Long id);
+
+    List<DroneResponseDto> getAvailableDronesForLoading();
 }

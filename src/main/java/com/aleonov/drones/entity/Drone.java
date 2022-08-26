@@ -3,8 +3,12 @@ package com.aleonov.drones.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -29,11 +33,20 @@ public class Drone {
     @Column(nullable = false)
     private State state;
 
+    @Fetch(FetchMode.JOIN)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "drone_medicament",
+            joinColumns = @JoinColumn(name = "drone_id"),
+            inverseJoinColumns = @JoinColumn(name = "medicament_id")
+    )
+    private Set<Medicament> medications;
+
     public enum Model {
         LIGHTWEIGHT,
         MIDDLEWEIGHT,
         CRUISERWEIGHT,
-        HEAVYWEIGHT,
+        HEAVYWEIGHT;
     }
 
     public enum State {
@@ -42,6 +55,10 @@ public class Drone {
         LOADED,
         DELIVERING,
         DELIVERED,
-        RETURNING,
+        RETURNING;
+
+        public static List<State> getActiveStates() {
+            return List.of(IDLE, LOADING);
+        }
     }
 }
