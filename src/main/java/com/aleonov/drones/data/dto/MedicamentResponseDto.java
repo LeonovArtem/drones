@@ -1,4 +1,4 @@
-package com.aleonov.drones.dto;
+package com.aleonov.drones.data.dto;
 
 import lombok.Data;
 

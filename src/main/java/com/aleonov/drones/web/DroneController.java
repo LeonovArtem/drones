@@ -1,8 +1,8 @@
 package com.aleonov.drones.web;
 
-import com.aleonov.drones.dto.DroneRegistrationDto;
-import com.aleonov.drones.dto.DroneResponseDto;
-import com.aleonov.drones.mapper.DroneResponseMapper;
+import com.aleonov.drones.data.dto.DroneRegistrationDto;
+import com.aleonov.drones.data.dto.DroneResponseDto;
+import com.aleonov.drones.data.mapper.DroneResponseMapper;
 import com.aleonov.drones.service.drone.DroneFactory;
 import com.aleonov.drones.service.drone.DroneInfoService;
 import io.swagger.v3.oas.annotations.Operation;

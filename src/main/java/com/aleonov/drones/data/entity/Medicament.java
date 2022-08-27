@@ -1,4 +1,4 @@
-package com.aleonov.drones.entity;
+package com.aleonov.drones.data.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

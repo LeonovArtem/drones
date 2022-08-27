@@ -1,8 +1,8 @@
 package com.aleonov.drones.web;
 
-import com.aleonov.drones.dto.MedicamentRegistrationDto;
-import com.aleonov.drones.dto.MedicamentResponseDto;
-import com.aleonov.drones.mapper.MedicamentResponseMapper;
+import com.aleonov.drones.data.dto.MedicamentRegistrationDto;
+import com.aleonov.drones.data.dto.MedicamentResponseDto;
+import com.aleonov.drones.data.mapper.MedicamentResponseMapper;
 import com.aleonov.drones.service.medicament.MedicamentFactory;
 import com.aleonov.drones.service.medicament.MedicamentInfoService;
 import io.swagger.v3.oas.annotations.Operation;

@@ -1,6 +1,6 @@
 package com.aleonov.drones.service.medicament;
 
-import com.aleonov.drones.dto.MedicamentResponseDto;
+import com.aleonov.drones.data.dto.MedicamentResponseDto;
 
 import java.util.List;
 

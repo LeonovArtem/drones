@@ -1,6 +1,6 @@
 package com.aleonov.drones.repository;
 
-import com.aleonov.drones.entity.Medicament;
+import com.aleonov.drones.data.entity.Medicament;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

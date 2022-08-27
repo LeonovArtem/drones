@@ -1,9 +1,8 @@
-package com.aleonov.drones.service.medicament.impl;
+package com.aleonov.drones.service.medicament;
 
-import com.aleonov.drones.dto.MedicamentResponseDto;
-import com.aleonov.drones.mapper.MedicamentResponseMapper;
+import com.aleonov.drones.data.dto.MedicamentResponseDto;
+import com.aleonov.drones.data.mapper.MedicamentResponseMapper;
 import com.aleonov.drones.repository.MedicamentRepository;
-import com.aleonov.drones.service.medicament.MedicamentInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

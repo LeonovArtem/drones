@@ -1,6 +1,6 @@
-package com.aleonov.drones.dto;
+package com.aleonov.drones.data.dto;
 
-import com.aleonov.drones.entity.Drone;
+import com.aleonov.drones.data.entity.Drone;
 import lombok.Data;
 
 import javax.validation.constraints.Max;

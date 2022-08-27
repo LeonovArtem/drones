@@ -1,7 +1,7 @@
 package com.aleonov.drones.service.drone;
 
-import com.aleonov.drones.dto.DroneResponseDto;
-import com.aleonov.drones.entity.Drone;
+import com.aleonov.drones.data.dto.DroneResponseDto;
+import com.aleonov.drones.data.entity.Drone;
 
 import java.util.List;
 import java.util.Optional;

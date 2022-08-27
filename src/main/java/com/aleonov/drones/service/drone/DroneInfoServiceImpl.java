@@ -1,10 +1,9 @@
-package com.aleonov.drones.service.drone.impl;
+package com.aleonov.drones.service.drone;
 
-import com.aleonov.drones.dto.DroneResponseDto;
-import com.aleonov.drones.entity.Drone;
-import com.aleonov.drones.mapper.DroneResponseMapper;
+import com.aleonov.drones.data.dto.DroneResponseDto;
+import com.aleonov.drones.data.entity.Drone;
+import com.aleonov.drones.data.mapper.DroneResponseMapper;
 import com.aleonov.drones.repository.DroneRepository;
-import com.aleonov.drones.service.drone.DroneInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

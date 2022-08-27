@@ -1,7 +1,7 @@
 package com.aleonov.drones.service;
 
 import com.aleonov.drones.BaseFunctionalTest;
-import com.aleonov.drones.entity.Drone;
+import com.aleonov.drones.data.entity.Drone;
 import com.aleonov.drones.service.drone.DroneInfoService;
 import com.github.database.rider.core.api.dataset.DataSet;
 import org.junit.jupiter.api.Assertions;

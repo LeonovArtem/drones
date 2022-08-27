@@ -1,7 +1,7 @@
-package com.aleonov.drones.mapper;
+package com.aleonov.drones.data.mapper;
 
-import com.aleonov.drones.dto.DroneResponseDto;
-import com.aleonov.drones.entity.Drone;
+import com.aleonov.drones.data.entity.Drone;
+import com.aleonov.drones.data.dto.DroneResponseDto;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
