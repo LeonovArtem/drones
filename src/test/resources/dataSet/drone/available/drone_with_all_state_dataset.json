@@ -1,0 +1,34 @@
+{
+  "drone": [
+    {
+      "serial_number": "A",
+      "state": "IDLE",
+      "model": "LIGHTWEIGHT"
+    },
+    {
+      "serial_number": "B",
+      "state": "LOADING",
+      "model": "LIGHTWEIGHT"
+    },
+    {
+      "serial_number": "C",
+      "state": "LOADED",
+      "model": "LIGHTWEIGHT"
+    },
+    {
+      "serial_number": "D",
+      "state": "DELIVERING",
+      "model": "LIGHTWEIGHT"
+    },
+    {
+      "serial_number": "E",
+      "state": "DELIVERED",
+      "model": "LIGHTWEIGHT"
+    },
+    {
+      "serial_number": "F",
+      "state": "RETURNING",
+      "model": "LIGHTWEIGHT"
+    }
+  ]
+}
