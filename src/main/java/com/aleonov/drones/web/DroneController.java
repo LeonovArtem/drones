@@ -5,7 +5,11 @@ import com.aleonov.drones.data.dto.DroneResponseDto;
 import com.aleonov.drones.data.mapper.DroneResponseMapper;
 import com.aleonov.drones.service.drone.DroneFactory;
 import com.aleonov.drones.service.drone.DroneInfoService;
+import com.aleonov.drones.service.drone.load.DroneLoadService;
+import com.aleonov.drones.data.dto.DroneLoadResponseDto;
+import com.aleonov.drones.service.drone.load.businesRule.exception.BusinessRuleException;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,6 +28,7 @@ import java.util.List;
 public class DroneController {
     private final DroneFactory droneFactory;
     private final DroneInfoService droneInfoService;
+    private final DroneLoadService droneLoadService;
     private final DroneResponseMapper mapper;
 
     @Operation(description = "Get all drones")
@@ -55,5 +60,22 @@ public class DroneController {
     @GetMapping(value = "available", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DroneResponseDto> getAvailableDrones() {
         return droneInfoService.getAvailableDronesForLoading();
+    }
+
+    @Operation(summary = "Load drone with medication")
+    @ApiResponse(description = "Drone loaded")
+    @GetMapping(value = "load/{droneId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DroneLoadResponseDto> loadMedication(@PathVariable("droneId") Long droneId, Long medicationId) {
+        var response = new DroneLoadResponseDto();
+        try {
+            droneLoadService.loadMedication(droneId, medicationId);
+            response.setMessage("Medication added successfully");
+
+            return ResponseEntity.ok(response);
+        } catch (BusinessRuleException e) {
+            response.setMessage(e.getMessage());
+        }
+
+        return ResponseEntity.badRequest().body(response);
     }
 }
