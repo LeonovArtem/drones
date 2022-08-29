@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.transaction.Transactional;
+
 public class DroneInfoServiceTest extends BaseFunctionalTest {
 
     @Autowired
@@ -17,7 +19,8 @@ public class DroneInfoServiceTest extends BaseFunctionalTest {
     @DataSet(
             value = {"/dataSet/drone/available/drone_with_all_state_dataset.json"}
     )
-    void getAvailableDrones_mustBeReturnOnlyActiveDrone() {
+    @Transactional
+    public void getAvailableDrones_mustBeReturnOnlyActiveDrone() {
         var availableDrones = droneInfoService.getAvailableDronesForLoading();
         var expectedCountDrones = 2;
         Assertions.assertEquals(expectedCountDrones, availableDrones.size());

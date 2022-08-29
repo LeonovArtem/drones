@@ -1,0 +1,19 @@
+{
+  "drone": [
+    {
+      "id": 1,
+      "serial_number": "TEST",
+      "state": "LOADED",
+      "model": "LIGHTWEIGHT",
+      "battery_capacity": 100,
+      "weight_limit": 100
+    }
+  ],
+  "medicament": [
+    {
+      "id": 1,
+      "code": "M_1",
+      "weight": 100
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "drone": [
+    {
+      "id": 1,
+      "serial_number": "TEST",
+      "state": "IDLE",
+      "model": "LIGHTWEIGHT",
+      "battery_capacity": 100,
+      "weight_limit": 200
+    }
+  ],
+  "medicament": [
+    {
+      "id": 1,
+      "code": "M_1",
+      "weight": 100
+    },
+    {
+      "id": 2,
+      "code": "M_2",
+      "weight": 100
+    },
+    {
+      "id": 3,
+      "code": "M_3",
+      "weight": 200
+    }
+  ],
+  "drone_medicament": [
+    {
+      "drone_id": 1,
+      "medicament_id": 1
+    },
+    {
+      "drone_id": 1,
+      "medicament_id": 2
+    }
+  ]
+}
