@@ -30,7 +30,7 @@ public class MedicamentController {
         return medicamentInfoService.getAll();
     }
 
-    @Operation(description = "Create medication")
+    @Operation(description = "Create medication", summary = "Create new medication")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public MedicamentResponseDto create(@Valid @RequestBody MedicamentRegistrationDto medicamentRegistrationDto) {

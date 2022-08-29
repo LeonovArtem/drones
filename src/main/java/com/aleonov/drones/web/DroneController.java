@@ -37,7 +37,7 @@ public class DroneController {
         return Mono.just(droneInfoService.getAll());
     }
 
-    @Operation(description = "Register Drone")
+    @Operation(description = "Create new Drone", summary = "Register Drone")
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public DroneResponseDto register(@Valid @RequestBody DroneRegistrationDto droneRegistrationDto) {
