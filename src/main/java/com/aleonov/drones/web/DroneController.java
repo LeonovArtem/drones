@@ -1,13 +1,16 @@
 package com.aleonov.drones.web;
 
+import com.aleonov.drones.data.dto.DroneBatteryLevelResponseDto;
+import com.aleonov.drones.data.dto.DroneLoadResponseDto;
 import com.aleonov.drones.data.dto.DroneRegistrationDto;
 import com.aleonov.drones.data.dto.DroneResponseDto;
 import com.aleonov.drones.data.mapper.DroneResponseMapper;
 import com.aleonov.drones.service.drone.DroneFactory;
 import com.aleonov.drones.service.drone.DroneInfoService;
 import com.aleonov.drones.service.drone.load.DroneLoadService;
-import com.aleonov.drones.data.dto.DroneLoadResponseDto;
 import com.aleonov.drones.service.drone.load.businesRule.exception.BusinessRuleException;
+import com.aleonov.drones.service.drone.load.businesRule.rule.BatteryCapacityLow;
+import com.aleonov.drones.service.drone.load.dto.BusinessRuleRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -30,6 +33,7 @@ public class DroneController {
     private final DroneInfoService droneInfoService;
     private final DroneLoadService droneLoadService;
     private final DroneResponseMapper mapper;
+    private final BatteryCapacityLow batteryCapacityChecker;
 
     @Operation(description = "Get all drones")
     @GetMapping
@@ -56,7 +60,7 @@ public class DroneController {
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
-    @Operation(description = "Get available drones for loading")
+    @Operation(summary = "Get available drones for loading")
     @GetMapping(value = "available", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DroneResponseDto> getAvailableDrones() {
         return droneInfoService.getAvailableDronesForLoading();
@@ -77,5 +81,31 @@ public class DroneController {
         }
 
         return ResponseEntity.badRequest().body(response);
+    }
+
+    @Operation(summary = "Check drone battery level for a given drone")
+    @GetMapping(value = "{droneId}/battery-level/check", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> checkBattery(@PathVariable Long droneId) {
+        var drone = droneInfoService.getById(droneId);
+        if (drone.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        var response = DroneBatteryLevelResponseDto
+                .builder()
+                .droneId(droneId)
+                .batteryLevel(drone.get().getBatteryCapacity());
+        try {
+            batteryCapacityChecker.check(
+                    BusinessRuleRequestDto
+                            .builder()
+                            .drone(drone.get())
+                            .build()
+            );
+            response.message("Battery capacity is normal");
+        } catch (BusinessRuleException e) {
+            response.message(e.getMessage());
+        }
+
+        return ResponseEntity.ok(response.build());
     }
 }
