@@ -18,7 +18,8 @@
         <testcontainers.version>1.17.3</testcontainers.version>
         <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
         <database.rider.version>1.33.0</database.rider.version>
-        <openapi.version>1.6.10</openapi.version>
+        <openapi.version>1.6.11</openapi.version>
+        <liquibase.version>4.15.0</liquibase.version>
     </properties>
     <dependencies>
         <dependency>
@@ -40,6 +41,11 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
